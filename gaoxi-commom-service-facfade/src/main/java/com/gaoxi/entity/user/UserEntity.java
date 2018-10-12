@@ -28,5 +28,6 @@ public class UserEntity implements Serializable{
     // 账号状态
     private UserStateEnum userStateEnum;
 
-
+    // 用户角色
+    private RoleEntity roleEntity;
 }
