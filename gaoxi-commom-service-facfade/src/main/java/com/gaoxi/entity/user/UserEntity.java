@@ -1,5 +1,8 @@
 package com.gaoxi.entity.user;
 
+import com.gaoxi.enumeration.user.UserStateEnum;
+import com.gaoxi.enumeration.user.UserTypeEnum;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 

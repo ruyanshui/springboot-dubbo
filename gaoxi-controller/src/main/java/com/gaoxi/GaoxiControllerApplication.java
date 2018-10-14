@@ -1,12 +1,12 @@
-package com.gaoxi.gaoxiuser;
+package com.gaoxi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GaoxiUserApplication {
+public class GaoxiControllerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GaoxiUserApplication.class, args);
+		SpringApplication.run(GaoxiControllerApplication.class, args);
 	}
 }

@@ -1,5 +1,6 @@
 package com.gaoxi.entity.order;
 
+import com.gaoxi.entity.user.LocationEntity;
 import com.gaoxi.entity.user.UserEntity;
 import com.gaoxi.enumeration.order.OrderStateEnum;
 import com.gaoxi.enumeration.order.PayModeEnum;
@@ -32,6 +33,122 @@ public class OrderEntity implements Serializable{
     // 订单到达各个状态的时间
     private List<OrderStateTimeEntity> orderStateTimeList;
 
-    // 支付发昂视
+    // 支付方式
     private PayModeEnum payModeEnum;
+
+    // 订单总金额
+    private String totalPrice;
+
+    // 发票信息
+    private ReceiptEntity receiptEntity;
+
+    // 收货地址
+    private LocationEntity locationEntity;
+
+    // 买家备注信息
+    private String remark;
+
+    // 物流单号
+    private String expressNo;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public UserEntity getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(UserEntity buyer) {
+        this.buyer = buyer;
+    }
+
+    public UserEntity getCompany() {
+        return company;
+    }
+
+    public void setCompany(UserEntity company) {
+        this.company = company;
+    }
+
+    public List<ProductOrderEntity> getProductOrderList() {
+        return productOrderList;
+    }
+
+    public void setProductOrderList(List<ProductOrderEntity> productOrderList) {
+        this.productOrderList = productOrderList;
+    }
+
+    public OrderStateEnum getOrderStateEnum() {
+        return orderStateEnum;
+    }
+
+    public void setOrderStateEnum(OrderStateEnum orderStateEnum) {
+        this.orderStateEnum = orderStateEnum;
+    }
+
+    public List<OrderStateTimeEntity> getOrderStateTimeList() {
+        return orderStateTimeList;
+    }
+
+    public void setOrderStateTimeList(List<OrderStateTimeEntity> orderStateTimeList) {
+        this.orderStateTimeList = orderStateTimeList;
+    }
+
+    public PayModeEnum getPayModeEnum() {
+        return payModeEnum;
+    }
+
+    public void setPayModeEnum(PayModeEnum payModeEnum) {
+        this.payModeEnum = payModeEnum;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public ReceiptEntity getReceiptEntity() {
+        return receiptEntity;
+    }
+
+    public void setReceiptEntity(ReceiptEntity receiptEntity) {
+        this.receiptEntity = receiptEntity;
+    }
+
+    public LocationEntity getLocationEntity() {
+        return locationEntity;
+    }
+
+    public void setLocationEntity(LocationEntity locationEntity) {
+        this.locationEntity = locationEntity;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getExpressNo() {
+        return expressNo;
+    }
+
+    public void setExpressNo(String expressNo) {
+        this.expressNo = expressNo;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderEntity{" + "id='" + id + '\'' + ", buyer=" + buyer + ", company=" + company + ", productOrderList=" + productOrderList + ", orderStateEnum=" + orderStateEnum + ", orderStateTimeList=" + orderStateTimeList + ", payModeEnum=" + payModeEnum + ", totalPrice='" + totalPrice + '\'' + ", receiptEntity=" + receiptEntity + ", locationEntity=" + locationEntity + ", remark='" + remark + '\'' + ", expressNo='" + expressNo + '\'' + '}';
+    }
 }

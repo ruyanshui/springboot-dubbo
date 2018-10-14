@@ -1,12 +1,12 @@
-package com.gaoxi.gaoxiredis;
+package com.gaoxi.facade;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GaoxiRedisApplication {
+public class GaoxiCommomServiceFadeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GaoxiRedisApplication.class, args);
+		SpringApplication.run(GaoxiCommomServiceFadeApplication.class, args);
 	}
 }

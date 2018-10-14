@@ -1,4 +1,4 @@
-package com.gaoxi.entity.user;
+package com.gaoxi.enumeration.user;
 
 import com.gaoxi.enumeration.BaseEnum;
 

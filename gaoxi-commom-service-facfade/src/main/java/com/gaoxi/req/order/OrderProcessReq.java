@@ -1,5 +1,6 @@
 package com.gaoxi.req.order;
 
+import com.gaoxi.enumeration.order.ProcessReqEnum;
 import com.gaoxi.req.AbsReq;
 
 /**
