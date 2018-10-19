@@ -1,7 +1,11 @@
 package com.gaoxi.controller.user;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gaoxi.entity.user.*;
+import com.gaoxi.exception.CommonBizException;
+import com.gaoxi.exception.ExpCodeEnum;
 import com.gaoxi.facade.Redis.IRedisService;
 import com.gaoxi.facade.user.IUserService;
 import com.gaoxi.redis.RedisServiceTemp;
@@ -20,6 +24,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+
+import static com.gaoxi.rsp.Result.newFailureResult;
+import static com.gaoxi.rsp.Result.newSuccessResult;
 
 @RestController
 public class UserControllerImpl implements IUserController{
@@ -47,7 +54,7 @@ public class UserControllerImpl implements IUserController{
 
         // 登录成功
         doLoginSuccess(userEntity, httpRsp);
-        return Result.newSuccessResult(userEntity);
+        return newSuccessResult(userEntity);
     }
 
     private void doLoginSuccess(UserEntity userEntity, HttpServletResponse httpRsp) {
@@ -69,7 +76,7 @@ public class UserControllerImpl implements IUserController{
     public Result logout(HttpServletRequest httpReq, HttpServletResponse httpRsp) {
         // 处理登出
         doLogout(httpReq, httpRsp);
-        return Result.newSuccessResult();
+        return newSuccessResult();
     }
 
     private void doLogout(HttpServletRequest httpReq, HttpServletResponse httpRsp) {
@@ -105,66 +112,140 @@ public class UserControllerImpl implements IUserController{
 
     @Override
     public Result register(RegisterReq registerReq, HttpServletResponse httpRsp) {
-        return null;
+        // 用户信息入库
+        UserEntity userEntity = userService.register(registerReq);
+        // 登录成功
+        doLoginSuccess(userEntity, httpRsp);
+        return newSuccessResult();
     }
 
     @Override
     public Result isLogin(HttpServletRequest httpReq) {
-        return null;
+        
+        String sessionId = getSessionID(httpReq);
+        UserEntity userEntity = getUserEntity(sessionId);
+
+        if (userEntity == null) {
+            return newFailureResult();
+        }
+        return newSuccessResult(userEntity);
+    }
+
+    /**
+     * 获取SessionId对应的用户信息
+     * @param sessionID
+     * @return
+     */
+    private UserEntity getUserEntity(String sessionID) {
+        // SessionID为空
+        if (StringUtils.isEmpty(sessionID)) {
+            return null;
+        }
+
+        // 获取UserRntity
+        Object userEntity = RedisServiceTemp.userMap.get(sessionID);
+        if (userEntity==null) {
+            return null;
+        }
+        return (UserEntity) userEntity;
     }
 
     @Override
     public Result<List<UserEntity>> findUsers(UserQueryReq userQueryReq) {
-        return null;
+        // 查询
+        List<UserEntity> userEntityList = userService.findUsers(userQueryReq);
+        return newSuccessResult(userEntityList);
     }
 
     @Override
     public Result batchUpdateUserState(BatchReq<UserStateReq> userStateReqs) {
-        return null;
+
+        // 批量更新
+        userService.batchUpdateUserState(userStateReqs);
+
+        return newSuccessResult();
     }
 
     @Override
     public Result createAdminUser(AdminCreateReq adminCreateReq) {
-        return null;
+        // 创建管理员
+        userService.createAdminUser(adminCreateReq);
+        return newSuccessResult();
     }
 
     @Override
     public Result<List<RoleEntity>> findRoles() {
-        return null;
+        // 查询
+        List<RoleEntity> roleEntityList = userService.findRoles();
+
+        // 成功
+        return newSuccessResult(roleEntityList);
     }
 
     @Override
     public Result deleteRole(String roleId) {
-        return null;
+        userService.deleteRole(roleId);
+
+        return newSuccessResult();
     }
 
     @Override
     public Result updateMenuOfRole(RoleMemuReq roleMenuReq) {
-        return null;
+
+        userService.updateMenuOfRole(roleMenuReq);
+        return newSuccessResult();
     }
 
     @Override
     public Result updatePermissionOfRole(RolePermissionReq rolePermissionReq) {
-        return null;
+
+        userService.updatePermissionOfRole(rolePermissionReq);
+        return newSuccessResult();
     }
 
     @Override
     public Result<List<PermssionEntity>> findPermissions() {
-        return null;
+
+        List<PermssionEntity> permssionEntityList = userService.findPermissions();
+        return newSuccessResult(permssionEntityList);
     }
 
     @Override
     public Result<List<MenuEntity>> findMenus() {
-        return null;
+
+        List<MenuEntity> menuEntities = userService.findMenus();
+        return newSuccessResult(menuEntities);
     }
 
     @Override
     public Result<List<LocationEntity>> findLocations(HttpServletRequest httpReq) {
-        return null;
+        // 获取userId
+        String userId = getUserId(httpReq);
+        List<LocationEntity> locationEntityList = userService.findLocations(userId);
+        return newSuccessResult(locationEntityList);
+    }
+
+    /**
+     * 获取用户ID
+     * @param httpReq
+     * @return
+     */
+    private String getUserId(HttpServletRequest httpReq) {
+        UserEntity userEntity = userUtil.getUser(httpReq);
+        if (userEntity == null) {
+            throw new CommonBizException(ExpCodeEnum.UNLOGIN);
+        }
+        return userEntity.getId();
     }
 
     @Override
     public Result<String> createLocation(LocationCreateReq locationCreateReq, HttpServletRequest httpReq) {
+
+        // 获取UserId
+        String userId = getUserId(httpReq);
+        // 新增
+        String locationId = userService.createLocation()
+
         return null;
     }
 
