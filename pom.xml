@@ -65,8 +65,8 @@
 		<!-- gaoxi-common-service-facade -->
 		<dependency>
 			<groupId>com.gaoxi</groupId>
-			<artifactId>gaoxi-common-service-facade</artifactId>
-			<version>0.0.1</version>
+			<artifactId>gaoxi-common-service-facfade</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- AOP -->

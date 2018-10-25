@@ -19,7 +19,7 @@ public class OrderProcessContext<T> implements Serializable {
     private OrderProcessReq orderProcessReq;
 
     // 订单受理结果
-    private T orderProcessRsq;
+    private T orderProcessRsp;
 
 
     public static long getSerialVersionUID() {
@@ -42,12 +42,12 @@ public class OrderProcessContext<T> implements Serializable {
         this.orderProcessReq = orderProcessReq;
     }
 
-    public T getOrderProcessRsq() {
-        return orderProcessRsq;
+    public T getOrderProcessRsp() {
+        return orderProcessRsp;
     }
 
-    public void setOrderProcessRsq(T orderProcessRsq) {
-        this.orderProcessRsq = orderProcessRsq;
+    public void setOrderProcessRsp(T orderProcessRsp) {
+        this.orderProcessRsp = orderProcessRsp;
     }
 
     @Override
@@ -55,8 +55,7 @@ public class OrderProcessContext<T> implements Serializable {
         return "OrderProcessContext{" +
                 "isStop=" + isStop +
                 ", orderProcessReq=" + orderProcessReq +
-                ", orderProcessRsq=" + orderProcessRsq +
+                ", orderProcessRsp=" + orderProcessRsp +
                 '}';
     }
-
 }

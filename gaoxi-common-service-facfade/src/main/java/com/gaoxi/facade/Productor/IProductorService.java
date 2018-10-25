@@ -3,7 +3,7 @@ package com.gaoxi.facade.Productor;
 import com.gaoxi.entity.product.BrandEntity;
 import com.gaoxi.entity.product.CategoryEntity;
 import com.gaoxi.entity.product.ProductEntity;
-import com.gaoxi.req.productor.*;
+import com.gaoxi.req.product.*;
 import com.gaoxi.rsp.Result;
 
 import java.util.List;

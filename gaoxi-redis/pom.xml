@@ -27,10 +27,7 @@
 
 	<dependencies>
 
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-data-redis</artifactId>
-	</dependency>
+
 
 	<dependency>
 		<groupId>com.fasterxml.jackson.core</groupId>
@@ -45,8 +42,13 @@
 	</dependency>
 		<dependency>
 			<groupId>com.gaoxi</groupId>
-			<artifactId>gaoxi-commom-service-fade</artifactId>
+			<artifactId>gaoxi-common-service-facfade</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>2.0.10.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<build>

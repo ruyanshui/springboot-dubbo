@@ -21,7 +21,7 @@ public class OrderInsertReq extends AbsReq {
     private Map<ProductEntity, Integer> prodEntityCountMap;
 
     // 支付方式
-    private String payModeCode;
+    private Integer payModeCode;
 
     // 发票信息ID
     private String receiptId;
@@ -64,11 +64,11 @@ public class OrderInsertReq extends AbsReq {
         this.prodEntityCountMap = prodEntityCountMap;
     }
 
-    public String getPayModeCode() {
+    public Integer getPayModeCode() {
         return payModeCode;
     }
 
-    public void setPayModeCode(String payModeCode) {
+    public void setPayModeCode(Integer payModeCode) {
         this.payModeCode = payModeCode;
     }
 
@@ -98,6 +98,15 @@ public class OrderInsertReq extends AbsReq {
 
     @Override
     public String toString() {
-        return "OrderInsertReq{" + "userId='" + userId + '\'' + ", prodIdCountJson='" + prodIdCountJson + '\'' + ", prodIdCountMap=" + prodIdCountMap + ", prodEntityCountMap=" + prodEntityCountMap + ", payModeCode='" + payModeCode + '\'' + ", receiptId='" + receiptId + '\'' + ", locationId='" + locationId + '\'' + ", remark='" + remark + '\'' + '}';
+        return "OrderInsertReq{" +
+                "userId='" + userId + '\'' +
+                ", prodIdCountJson='" + prodIdCountJson + '\'' +
+                ", prodIdCountMap=" + prodIdCountMap +
+                ", prodEntityCountMap=" + prodEntityCountMap +
+                ", payModeCode=" + payModeCode +
+                ", receiptId='" + receiptId + '\'' +
+                ", locationId='" + locationId + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 }

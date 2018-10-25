@@ -21,6 +21,9 @@ public class AccessAuthEntity implements Serializable {
     private HttpMethodEnum httpMethodEnum;
 
     // 当前接口是否需要登录
+    private boolean isLogin;
+
+    // 当前接口的访问权限
     private String permission;
 
     public AccessAuthEntity(String url, String methodName, HttpMethodEnum httpMethodEnum, String permission) {
@@ -65,9 +68,23 @@ public class AccessAuthEntity implements Serializable {
         this.permission = permission;
     }
 
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
+
     @Override
     public String toString() {
-        return "AccessAuthEntity{" + "url='" + url + '\'' + ", methodName='" + methodName + '\'' + ", httpMethodEnum=" + httpMethodEnum + ", permission='" + permission + '\'' + '}';
+        return "AccessAuthEntity{" +
+                "url='" + url + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", httpMethodEnum=" + httpMethodEnum +
+                ", isLogin=" + isLogin +
+                ", permission='" + permission + '\'' +
+                '}';
     }
 }
 

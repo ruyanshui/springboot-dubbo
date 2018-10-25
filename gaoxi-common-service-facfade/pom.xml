@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gaoxi</groupId>
-	<artifactId>gaoxi-commom-service-fade</artifactId>
+	<artifactId>gaoxi-common-service-facfade</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>gaoxi-commom-service-fade</name>
+	<name>gaoxi-common-service-facfade</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -46,11 +46,21 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.6.0</version>
+        </dependency>
 		<dependency>
-			<groupId>com.gaoxi</groupId>
-			<artifactId>gaoxi-redis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.6.0</version>
 		</dependency>
+		<!--<dependency>
+            <groupId>com.gaoxi</groupId>
+            <artifactId>gaoxi-redis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>-->
 
 	</dependencies>
 
